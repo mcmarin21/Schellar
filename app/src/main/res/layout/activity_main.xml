@@ -11,13 +11,14 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:paddingHorizontal="24sp"
+        android:paddingTop="24sp"
         android:layout_height="wrap_content"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="96sp"
-        android:paddingTop="24sp">
+        android:padding="24sp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
