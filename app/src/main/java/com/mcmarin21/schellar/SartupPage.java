@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -32,7 +33,7 @@ public class SartupPage extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         int opc = v.getId();
         if(opc == R.id.mainBtnLogin){
-            Navigation.findNavController(v).navigate(R.id.login_page);
+            Navigation.findNavController(v).navigate(R.id.action_sartupPage_to_login_page);
         }
     }
 }

@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_sartup_page" >
         <action
             android:id="@+id/action_sartupPage_to_login_page"
-            app:destination="@id/login_page" />
+            app:destination="@id/login_page"
+            app:enterAnim="@anim/to_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/from_left" />
     </fragment>
     <fragment
         android:id="@+id/login_page"
@@ -21,6 +25,10 @@
         tools:layout="@layout/fragment_login_page" >
         <action
             android:id="@+id/action_login_page_to_sartupPage"
-            app:destination="@id/sartupPage" />
+            app:destination="@id/sartupPage"
+            app:enterAnim="@anim/to_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/from_right" />
     </fragment>
 </navigation>
