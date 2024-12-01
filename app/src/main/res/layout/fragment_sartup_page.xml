@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="24sp"
+    android:layout_height="match_parent"
+    tools:context=".SartupPage">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24sp"
+        android:paddingBottom="48sp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenid@!"
+            android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
+            android:textColor="?attr/colorPrimary"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8sp"
+            android:text="Inicio sesión"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:id="@+id/mainBtnLogin"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8sp"
+            android:text="Registrarse"
+            style="@style/Widget.Material3.Button"
+            android:id="@+id/mainBtnSignUp"/>
+    </LinearLayout>
+
+</LinearLayout>

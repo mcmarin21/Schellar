@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigator_start"
+    app:startDestination="@id/sartupPage">
+
+    <fragment
+        android:id="@+id/sartupPage"
+        android:name="com.mcmarin21.schellar.SartupPage"
+        android:label="fragment_sartup_page"
+        tools:layout="@layout/fragment_sartup_page" >
+        <action
+            android:id="@+id/action_sartupPage_to_login_page"
+            app:destination="@id/login_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/login_page"
+        android:name="com.mcmarin21.schellar.login_page"
+        android:label="fragment_login_page"
+        tools:layout="@layout/fragment_login_page" >
+        <action
+            android:id="@+id/action_login_page_to_sartupPage"
+            app:destination="@id/sartupPage" />
+    </fragment>
+</navigation>
