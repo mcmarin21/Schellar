@@ -1,4 +1,4 @@
-package com.mcmarin21.schellar;
+package com.mcmarin21.schellar.account;
 
 import android.os.Bundle;
 
@@ -13,10 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputLayout;
+import com.mcmarin21.schellar.R;
+
 public class login_page extends Fragment implements View.OnClickListener {
 
     EditText etUser, etPassword;
     Button btLogin, btNewAccount;
+    TextInputLayout tiUser, tiPassword;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -27,6 +31,9 @@ public class login_page extends Fragment implements View.OnClickListener {
 
         btLogin = view.findViewById(R.id.login_bt_login);
         btNewAccount = view.findViewById(R.id.login_bt_new_account);
+
+        tiPassword = view.findViewById(R.id.login_ti_password);
+        tiUser = view.findViewById(R.id.login_ti_user);
 
         btLogin.setOnClickListener(this);
         btNewAccount.setOnClickListener(this);
@@ -49,16 +56,22 @@ public class login_page extends Fragment implements View.OnClickListener {
             String strPassword = etPassword.getText().toString();
 
             if( strUser.isEmpty() ){
-                etUser.setError("Ingrese un usuario");
+                //etUser.setError("Ingrese un usuario");
+                tiUser.setError("Ingrese un usuario");
                 return;
+            }else{
+                tiUser.setError(null);
             }
             if (strPassword.isEmpty()){
-                etPassword.setError("Ingrese una contraseña");
+                //etPassword.setError("Ingrese una contraseña");
+                tiPassword.setError("Ingrese una contraseña");
                 return;
+            }else{
+                tiPassword.setError(null);
             }
 
-            etUser.setError(null);
-            etPassword.setError(null);
+
+
 
 
 

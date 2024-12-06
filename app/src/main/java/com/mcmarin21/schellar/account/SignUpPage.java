@@ -1,4 +1,4 @@
-package com.mcmarin21.schellar;
+package com.mcmarin21.schellar.account;
 
 import android.os.Bundle;
 
@@ -13,10 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputLayout;
+import com.mcmarin21.schellar.R;
+
 public class SignUpPage extends Fragment implements View.OnClickListener {
 
     EditText etUser, etEmail, etPassword, etPasswordConf;
     Button btSignUp, btLogin;
+    TextInputLayout tiUser, tiEmail, tiPassword, tiPasswordConf;
 
 
     @Override
@@ -27,6 +31,11 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
         etEmail = view.findViewById(R.id.sign_up_et_email);
         etPassword = view.findViewById(R.id.sign_up_et_password);
         etPasswordConf = view.findViewById(R.id.sign_up_et_password_conf);
+
+        tiUser = view.findViewById(R.id.sign_up_ti_user);
+        tiEmail = view.findViewById(R.id.sign_up_ti_email);
+        tiPassword = view.findViewById(R.id.sign_up_ti_password);
+        tiPasswordConf = view.findViewById(R.id.sign_up_ti_password_conf);
 
         btSignUp = view.findViewById(R.id.sign_up_bt_sign_up);
         btLogin = view.findViewById(R.id.sign_up_bt_login);
@@ -49,7 +58,34 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
 
         if(opc == R.id.sign_up_bt_sign_up){
 
+            if(etUser.getText().toString().isEmpty()){
+                tiUser.setError("Ingrese un usuario");
+                return;
+            }
+            else{
+                tiUser.setError(null);
+            }
 
+            if(etEmail.getText().toString().isEmpty()){
+                tiEmail.setError("Ingrese un correo");
+                return;
+            }else{
+                tiEmail.setError(null);
+            }
+
+            if(etPassword.getText().toString().isEmpty()){
+                tiPassword.setError("Ingrese un correo");
+                return;
+            }else{
+                tiPassword.setError(null);
+            }
+
+            if(etPasswordConf.getText().toString().isEmpty()){
+                tiPasswordConf.setError("Ingrese un correo");
+                return;
+            }else{
+                tiPasswordConf.setError(null);
+            }
 
             return;
         }

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/sartupPage"
-        android:name="com.mcmarin21.schellar.StartupPage"
+        android:name="com.mcmarin21.schellar.account.StartupPage"
         android:label="fragment_sartup_page"
         tools:layout="@layout/fragment_startup_page" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/login_page"
-        android:name="com.mcmarin21.schellar.login_page"
+        android:name="com.mcmarin21.schellar.account.login_page"
         android:label="fragment_login_page"
         tools:layout="@layout/fragment_login_page" >
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpPage"
-        android:name="com.mcmarin21.schellar.SignUpPage"
+        android:name="com.mcmarin21.schellar.account.SignUpPage"
         android:label="fragment_sign_up_page"
         tools:layout="@layout/fragment_sign_up_page" >
         <action

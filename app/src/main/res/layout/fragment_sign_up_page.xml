@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24sp"
-    tools:context=".SignUpPage">
+    tools:context=".account.SignUpPage">
 
     <TextView
         android:layout_width="match_parent"
@@ -21,8 +21,10 @@
         android:layout_height="wrap_content"
         android:hint="Usuario"
         app:prefixText="@"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        android:id="@+id/sign_up_ti_user"
         app:errorEnabled="true"
-        app:boxStrokeErrorColor="?attr/colorError"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -36,7 +38,9 @@
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico"
         app:errorEnabled="true"
-        app:boxStrokeErrorColor="?attr/colorError"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        android:id="@+id/sign_up_ti_email"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -52,11 +56,14 @@
         android:hint="Contraseña"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
-        app:boxStrokeErrorColor="?attr/colorError"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        android:id="@+id/sign_up_ti_password"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLength="20"
             android:id="@+id/sign_up_et_password"
             android:inputType="textPassword"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"/>
@@ -68,11 +75,14 @@
         android:hint="Confirmar Contraseña"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
-        app:boxStrokeErrorColor="?attr/colorError"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        android:id="@+id/sign_up_ti_password_conf"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLength="20"
             android:id="@+id/sign_up_et_password_conf"
             android:inputType="textPassword"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"/>
