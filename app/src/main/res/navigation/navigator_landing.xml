@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/sartupPage"
-        android:name="com.mcmarin21.schellar.SartupPage"
+        android:name="com.mcmarin21.schellar.StartupPage"
         android:label="fragment_sartup_page"
-        tools:layout="@layout/fragment_sartup_page" >
+        tools:layout="@layout/fragment_startup_page" >
         <action
             android:id="@+id/action_sartupPage_to_login_page"
             app:destination="@id/login_page"
@@ -17,6 +17,9 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_sartupPage_to_signUpPage"
+            app:destination="@id/signUpPage" />
     </fragment>
     <fragment
         android:id="@+id/login_page"
@@ -30,5 +33,20 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_login_page_to_signUpPage"
+            app:destination="@id/signUpPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpPage"
+        android:name="com.mcmarin21.schellar.SignUpPage"
+        android:label="fragment_sign_up_page"
+        tools:layout="@layout/fragment_sign_up_page" >
+        <action
+            android:id="@+id/action_signUpPage_to_login_page"
+            app:destination="@id/login_page" />
+        <action
+            android:id="@+id/action_signUpPage_to_sartupPage"
+            app:destination="@id/sartupPage" />
     </fragment>
 </navigation>
