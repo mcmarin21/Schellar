@@ -56,22 +56,17 @@ public class login_page extends Fragment implements View.OnClickListener {
             String strPassword = etPassword.getText().toString();
 
             if( strUser.isEmpty() ){
-                //etUser.setError("Ingrese un usuario");
                 tiUser.setError("Ingrese un usuario");
                 return;
             }else{
                 tiUser.setError(null);
             }
             if (strPassword.isEmpty()){
-                //etPassword.setError("Ingrese una contraseña");
                 tiPassword.setError("Ingrese una contraseña");
                 return;
             }else{
                 tiPassword.setError(null);
             }
-
-
-
 
 
 

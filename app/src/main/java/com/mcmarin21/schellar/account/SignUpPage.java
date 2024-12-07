@@ -87,6 +87,8 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
                 tiPasswordConf.setError(null);
             }
 
+
+
             return;
         }
         if (opc == R.id.sign_up_bt_login){
