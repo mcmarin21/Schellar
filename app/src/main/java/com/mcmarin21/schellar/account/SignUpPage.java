@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.mcmarin21.schellar.Base;
+import com.mcmarin21.schellar.database.Base;
 import com.mcmarin21.schellar.R;
 
 public class SignUpPage extends Fragment implements View.OnClickListener {
@@ -63,7 +63,12 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
 
         if(opc == R.id.sign_up_bt_sign_up){
 
-            if(etUser.getText().toString().isEmpty()){
+            String userName = etUser.getText().toString();
+            String password = etPassword.getText().toString();
+            String passwordConf = etPasswordConf.getText().toString();
+            String email = etEmail.getText().toString();
+
+            if(userName.isEmpty()){
                 tiUser.setError("Ingrese un usuario");
                 return;
             }
@@ -71,31 +76,26 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
                 tiUser.setError(null);
             }
 
-            if(etEmail.getText().toString().isEmpty()){
+            if(email.isEmpty()){
                 tiEmail.setError("Ingrese un correo");
                 return;
             }else{
                 tiEmail.setError(null);
             }
 
-            if(etPassword.getText().toString().isEmpty()){
+            if(password.isEmpty()){
                 tiPassword.setError("Ingrese un correo");
                 return;
             }else{
                 tiPassword.setError(null);
             }
 
-            if(etPasswordConf.getText().toString().isEmpty()){
+            if(passwordConf.isEmpty()){
                 tiPasswordConf.setError("Ingrese un correo");
                 return;
             }else{
                 tiPasswordConf.setError(null);
             }
-
-            String userName = etUser.getText().toString();
-            String password = etPassword.getText().toString();
-            String passwordConf = etPasswordConf.getText().toString();
-            String email = etEmail.getText().toString();
 
             if(!password.equals(passwordConf)){
                 tiPasswordConf.setError("Las contraseñas no coinciden");
@@ -145,9 +145,7 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
             return;
         }
         if (opc == R.id.sign_up_bt_login){
-
             Navigation.findNavController(v).navigate(R.id.action_signUpPage_to_login_page);
-
             return;
         }
 

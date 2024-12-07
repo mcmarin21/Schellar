@@ -1,5 +1,7 @@
 package com.mcmarin21.schellar.account;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.mcmarin21.schellar.database.Base;
 import com.mcmarin21.schellar.R;
 
 public class login_page extends Fragment implements View.OnClickListener {
@@ -52,22 +56,46 @@ public class login_page extends Fragment implements View.OnClickListener {
 
         if( opc == R.id.login_bt_login ){
 
-            String strUser = etUser.getText().toString();
-            String strPassword = etPassword.getText().toString();
+            String userName = etUser.getText().toString();
+            String password = etPassword.getText().toString();
 
-            if( strUser.isEmpty() ){
+            if( userName.isEmpty() ){
                 tiUser.setError("Ingrese un usuario");
                 return;
             }else{
                 tiUser.setError(null);
             }
-            if (strPassword.isEmpty()){
+            if (password.isEmpty()){
                 tiPassword.setError("Ingrese una contraseña");
                 return;
             }else{
                 tiPassword.setError(null);
             }
 
+            Base dBSchellar = new Base(getContext(), "schellar", null, 1);
+            SQLiteDatabase baseR = dBSchellar.getReadableDatabase();
+
+            Cursor existenteUserName = baseR.rawQuery("select count(*) from usuario where user = " + '"' + userName + '"', null);
+
+            existenteUserName.moveToFirst();
+
+            if(Integer.parseInt(existenteUserName.getString(0)) > 0){
+
+                Cursor usuario = baseR.rawQuery("select * from usuario where user = " + '"' + userName + '"' + " AND password = " + '"' + password + '"', null);
+
+                if(usuario.moveToFirst()){
+
+                    Toast.makeText(getContext(), "Usuario encontrdo", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    tiPassword.setError("Contaseña incorrecta");
+                }
+            }else{
+                tiUser.setError("El usuario no existe");
+
+            }
+
+            baseR.close();
 
 
             return;
