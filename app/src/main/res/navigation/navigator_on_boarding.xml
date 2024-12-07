@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigator_on_boarding"
+    app:startDestination="@id/onBoarding1">
+
+    <fragment
+        android:id="@+id/onBoarding1"
+        android:name="com.mcmarin21.schellar.onboarding.OnBoarding1"
+        android:label="fragment_on_boarding1"
+        tools:layout="@layout/fragment_on_boarding1" >
+        <action
+            android:id="@+id/action_onBoarding1_to_onBoarding2"
+            app:destination="@id/onBoarding2"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoarding2"
+        android:name="com.mcmarin21.schellar.onboarding.OnBoarding2"
+        android:label="fragment_on_boarding2"
+        tools:layout="@layout/fragment_on_boarding2" >
+        <action
+            android:id="@+id/action_onBoarding2_to_onBoarding1"
+            app:destination="@id/onBoarding1"
+            app:popUpTo="@id/onBoarding1"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

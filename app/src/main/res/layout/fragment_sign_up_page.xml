@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24sp"
-    android:layout_height="match_parent"
-    tools:context=".account.login_page">
+    tools:context=".account.SignUpPage">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
-        android:text="Iniciar sesión"
+        android:text="Registrarse"
         android:layout_marginVertical="24sp"
         android:textColor="@color/md_theme_primary"/>
 
@@ -20,36 +20,75 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Usuario"
-        android:id="@+id/login_ti_user"
         app:prefixText="@"
         android:layout_marginVertical="8sp"
         app:counterEnabled="true"
         app:counterMaxLength="20"
+        android:id="@+id/sign_up_ti_user"
         app:errorEnabled="true"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/login_et_user"
+            android:id="@+id/sign_up_et_user"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:endIconMode="password_toggle"
-        app:errorEnabled="true"
         android:layout_marginVertical="8sp"
-        android:id="@+id/login_ti_password"
+        android:hint="Correo Electrónico"
+        app:errorEnabled="true"
         app:counterEnabled="true"
-        app:counterMaxLength="20"
-        android:hint="Contraseña"
+        app:counterMaxLength="50"
+        android:id="@+id/sign_up_ti_email"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/sign_up_et_email"
+            android:inputType="textEmailAddress"
+            style="@style/Widget.Material3.TextInputEditText.OutlinedBox"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:layout_marginVertical="8sp"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        android:id="@+id/sign_up_ti_password"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:id="@+id/sign_up_et_password"
             android:inputType="textPassword"
-            android:id="@+id/login_et_password"
+            style="@style/Widget.Material3.TextInputEditText.OutlinedBox"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirmar Contraseña"
+        android:layout_marginVertical="8sp"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        android:id="@+id/sign_up_ti_password_conf"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:id="@+id/sign_up_et_password_conf"
+            android:inputType="textPassword"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,8 +96,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8sp"
-        android:text="Iniciar Sesión"
-        android:id="@+id/login_bt_login"/>
+        android:text="Registrarse"
+        android:id="@+id/sign_up_bt_sign_up"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,13 +109,14 @@
 
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:text="¿No tienes cuenta?"/>
+            android:text="¿Ya tienes cuenta?"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.Material3.Button.TextButton"
-            android:id="@+id/login_bt_new_account"
-            android:text="Registrate"/>
+            android:id="@+id/sign_up_bt_login"
+            android:text="Inicia Sesión"/>
     </LinearLayout>
+
 
 </LinearLayout>
