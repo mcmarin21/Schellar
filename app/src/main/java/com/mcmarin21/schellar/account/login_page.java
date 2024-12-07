@@ -1,5 +1,8 @@
 package com.mcmarin21.schellar.account;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.mcmarin21.schellar.activities.App;
 import com.mcmarin21.schellar.database.Base;
 import com.mcmarin21.schellar.R;
 
@@ -85,7 +89,18 @@ public class login_page extends Fragment implements View.OnClickListener {
 
                 if(usuario.moveToFirst()){
 
-                    Toast.makeText(getContext(), "Usuario encontrdo", Toast.LENGTH_SHORT).show();
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    editor.putString("user_name_key", userName);
+                    editor.putString("password_key",password);
+
+                    editor.apply();
+
+                    Intent intent = new Intent(getContext(), App.class);
+                    startActivity(intent);
+                    getActivity().finish();
 
                 }else{
                     tiPassword.setError("Contaseña incorrecta");

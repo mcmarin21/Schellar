@@ -2,4 +2,8 @@
     <string name="app_name">Schellar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="on_boarding_1_title">Registra tu rendimiento</string>
+    <string name="on_boarding_1_text">Con Schellar puedes llevar un registro de tu rendimiento detallado de cada una de las materias y cada periodo.</string>
+    <string name="on_boarding_2_title">Recibe Recordatorios</string>
+    <string name="on_boarding_2_text">Schellar enviará recordatorios antes de una clase y actividades programadas.</string>
 </resources>

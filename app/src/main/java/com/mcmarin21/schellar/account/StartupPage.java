@@ -1,5 +1,8 @@
 package com.mcmarin21.schellar.account;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.mcmarin21.schellar.R;
+import com.mcmarin21.schellar.activities.App;
 
 public class StartupPage extends Fragment implements View.OnClickListener {
 
@@ -23,6 +27,17 @@ public class StartupPage extends Fragment implements View.OnClickListener {
         Button signUp = view.findViewById(R.id.mainBtnSignUp);
         login.setOnClickListener(this);
         signUp.setOnClickListener(this);
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
+
+        String userName = sharedPreferences.getString("user_name_key", null);
+
+        if(userName != null){
+            Intent intent = new Intent(getContext(), App.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
+
     }
 
     @Override
