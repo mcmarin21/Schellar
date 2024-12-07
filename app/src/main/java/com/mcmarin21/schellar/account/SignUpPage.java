@@ -1,5 +1,8 @@
 package com.mcmarin21.schellar.account;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.mcmarin21.schellar.Base;
 import com.mcmarin21.schellar.R;
 
 public class SignUpPage extends Fragment implements View.OnClickListener {
@@ -87,7 +92,55 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
                 tiPasswordConf.setError(null);
             }
 
+            String userName = etUser.getText().toString();
+            String password = etPassword.getText().toString();
+            String passwordConf = etPasswordConf.getText().toString();
+            String email = etEmail.getText().toString();
 
+            if(!password.equals(passwordConf)){
+                tiPasswordConf.setError("Las contraseñas no coinciden");
+                return;
+            }else{
+                tiPasswordConf.setError(null);
+            }
+
+            Base dBSchellar = new Base(getContext(), "schellar", null, 1);
+            SQLiteDatabase base = dBSchellar.getReadableDatabase();
+            Cursor existenteUserName = base.rawQuery("select count(*) from usuario where user = " + '"' + userName + '"', null);
+            Cursor existenteEmail = base.rawQuery("select count(*) from usuario where email =  " + '"' + email + '"', null);
+
+            existenteUserName.moveToFirst();
+            existenteEmail.moveToFirst();
+
+            base.close();
+
+            if(Integer.parseInt(existenteUserName.getString(0)) == 0){
+
+                tiUser.setError(null);
+                if(Integer.parseInt(existenteEmail.getString(0)) == 0){
+
+                    tiEmail.setError(null);
+
+                    SQLiteDatabase baseW = dBSchellar.getWritableDatabase();
+
+                    ContentValues registro = new ContentValues();
+
+                    registro.put("user", userName);
+                    registro.put("email", email);
+                    registro.put("password", password);
+
+                    baseW.insert("usuario", null, registro);
+
+                    Toast.makeText(getContext(), "Registro agregado", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    tiEmail.setError("El correo ya esta registrado");
+                    return;
+                }
+            }else{
+                tiUser.setError("El usuario ya existe");
+                return;
+            }
 
             return;
         }
