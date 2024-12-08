@@ -74,6 +74,8 @@ public class App extends AppCompatActivity implements NavigationView.OnNavigatio
             getSupportFragmentManager().beginTransaction().replace(fragmentContainer, new Configuracion()).commit();
         }
 
+        setTitle(item.getTitle());
+
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
