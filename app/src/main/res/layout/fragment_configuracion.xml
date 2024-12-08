@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:padding="24sp"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".app.Configuracion">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Configuracion" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cuenta"
+        android:layout_marginBottom="16sp"
+        android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
+        android:textFontWeight="600"
+        android:textColor="@color/md_theme_primary"/>
 
-</FrameLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginVertical="8sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/configuracion_bt_logout"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:text="Cerrar Sesion"/>
+
+</LinearLayout>
