@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16sp"
+    android:paddingVertical="8sp"
+    android:paddingHorizontal="24sp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,9 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Cuenta"
         android:layout_marginBottom="16sp"
-        android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
-        android:textFontWeight="600"
-        android:textColor="@color/md_theme_primary"/>
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"/>
 
     <Button
         android:layout_width="match_parent"

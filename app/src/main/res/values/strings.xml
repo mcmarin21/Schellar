@@ -8,4 +8,6 @@
     <string name="on_boarding_2_text">Schellar enviará recordatorios antes de una clase y actividades programadas.</string>
     <string name="navigation_drawer_open">Abrir nav</string>
     <string name="navigation_drawer_close">Cerrar nav</string>
+    <string name="home_saludo">¡Bienvenid@<b> %1$s </b>!</string>
+    <string name="clase_salon">Salon %1$s</string>
 </resources>

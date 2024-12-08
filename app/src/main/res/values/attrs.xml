@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorPink" format="color" />
+    <attr name="colorOnPink" format="color" />
+    <attr name="colorPinkContainer" format="color" />
+    <attr name="colorOnPinkContainer" format="color" />
+    <attr name="colorOrange" format="color" />
+    <attr name="colorOnOrange" format="color" />
+    <attr name="colorOrangeContainer" format="color" />
+    <attr name="colorOnOrangeContainer" format="color" />
+    <attr name="colorYellow" format="color" />
+    <attr name="colorOnYellow" format="color" />
+    <attr name="colorYellowContainer" format="color" />
+    <attr name="colorOnYellowContainer" format="color" />
+    <attr name="colorGreen" format="color" />
+    <attr name="colorOnGreen" format="color" />
+    <attr name="colorGreenContainer" format="color" />
+    <attr name="colorOnGreenContainer" format="color" />
+    <attr name="colorPurple" format="color" />
+    <attr name="colorOnPurple" format="color" />
+    <attr name="colorPurpleContainer" format="color" />
+    <attr name="colorOnPurpleContainer" format="color" />
+</resources>

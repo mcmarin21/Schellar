@@ -1,4 +1,4 @@
-package com.mcmarin21.schellar.database;
+package com.mcmarin21.schellar.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

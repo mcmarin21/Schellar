@@ -21,7 +21,7 @@ import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.mcmarin21.schellar.activities.OnBoarding;
-import com.mcmarin21.schellar.database.Base;
+import com.mcmarin21.schellar.model.Base;
 import com.mcmarin21.schellar.R;
 
 public class SignUpPage extends Fragment implements View.OnClickListener {

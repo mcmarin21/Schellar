@@ -46,8 +46,28 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer_mediumContrast</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh_mediumContrast</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest_mediumContrast</item>
+        <item name="colorPink">@color/colorPink_mediumContrast</item>
+        <item name="colorOnPink">@color/colorOnPink_mediumContrast</item>
+        <item name="colorPinkContainer">@color/colorPinkContainer_mediumContrast</item>
+        <item name="colorOnPinkContainer">@color/colorOnPinkContainer_mediumContrast</item>
+        <item name="colorOrange">@color/colorOrange_mediumContrast</item>
+        <item name="colorOnOrange">@color/colorOnOrange_mediumContrast</item>
+        <item name="colorOrangeContainer">@color/colorOrangeContainer_mediumContrast</item>
+        <item name="colorOnOrangeContainer">@color/colorOnOrangeContainer_mediumContrast</item>
+        <item name="colorYellow">@color/colorYellow_mediumContrast</item>
+        <item name="colorOnYellow">@color/colorOnYellow_mediumContrast</item>
+        <item name="colorYellowContainer">@color/colorYellowContainer_mediumContrast</item>
+        <item name="colorOnYellowContainer">@color/colorOnYellowContainer_mediumContrast</item>
+        <item name="colorGreen">@color/colorGreen_mediumContrast</item>
+        <item name="colorOnGreen">@color/colorOnGreen_mediumContrast</item>
+        <item name="colorGreenContainer">@color/colorGreenContainer_mediumContrast</item>
+        <item name="colorOnGreenContainer">@color/colorOnGreenContainer_mediumContrast</item>
+        <item name="colorPurple">@color/colorPurple_mediumContrast</item>
+        <item name="colorOnPurple">@color/colorOnPurple_mediumContrast</item>
+        <item name="colorPurpleContainer">@color/colorPurpleContainer_mediumContrast</item>
+        <item name="colorOnPurpleContainer">@color/colorOnPurpleContainer_mediumContrast</item>
     </style>
-    <style name="ThemeOverlay.AppTheme.HighContrast" parent="Theme.Material3.Light.NoActionBar">
+    <style name="ThemeOverlay.Schellar.HighContrast" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary_highContrast</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary_highContrast</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer_highContrast</item>
@@ -94,5 +114,25 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer_highContrast</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh_highContrast</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest_highContrast</item>
+        <item name="colorPink">@color/colorPink_highContrast</item>
+        <item name="colorOnPink">@color/colorOnPink_highContrast</item>
+        <item name="colorPinkContainer">@color/colorPinkContainer_highContrast</item>
+        <item name="colorOnPinkContainer">@color/colorOnPinkContainer_highContrast</item>
+        <item name="colorOrange">@color/colorOrange_highContrast</item>
+        <item name="colorOnOrange">@color/colorOnOrange_highContrast</item>
+        <item name="colorOrangeContainer">@color/colorOrangeContainer_highContrast</item>
+        <item name="colorOnOrangeContainer">@color/colorOnOrangeContainer_highContrast</item>
+        <item name="colorYellow">@color/colorYellow_highContrast</item>
+        <item name="colorOnYellow">@color/colorOnYellow_highContrast</item>
+        <item name="colorYellowContainer">@color/colorYellowContainer_highContrast</item>
+        <item name="colorOnYellowContainer">@color/colorOnYellowContainer_highContrast</item>
+        <item name="colorGreen">@color/colorGreen_highContrast</item>
+        <item name="colorOnGreen">@color/colorOnGreen_highContrast</item>
+        <item name="colorGreenContainer">@color/colorGreenContainer_highContrast</item>
+        <item name="colorOnGreenContainer">@color/colorOnGreenContainer_highContrast</item>
+        <item name="colorPurple">@color/colorPurple_highContrast</item>
+        <item name="colorOnPurple">@color/colorOnPurple_highContrast</item>
+        <item name="colorPurpleContainer">@color/colorPurpleContainer_highContrast</item>
+        <item name="colorOnPurpleContainer">@color/colorOnPurpleContainer_highContrast</item>
     </style>
 </resources>

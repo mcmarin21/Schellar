@@ -17,11 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.mcmarin21.schellar.activities.App;
-import com.mcmarin21.schellar.database.Base;
+import com.mcmarin21.schellar.model.Base;
 import com.mcmarin21.schellar.R;
 
 public class login_page extends Fragment implements View.OnClickListener {

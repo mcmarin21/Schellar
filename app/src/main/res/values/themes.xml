@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.Schellar" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Schellar" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -46,8 +46,25 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
-        <item name="fontFamily">@font/font_red_hat_display</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="colorPink">@color/colorPink</item>
+        <item name="colorOnPink">@color/colorOnPink</item>
+        <item name="colorPinkContainer">@color/colorPinkContainer</item>
+        <item name="colorOnPinkContainer">@color/colorOnPinkContainer</item>
+        <item name="colorOrange">@color/colorOrange</item>
+        <item name="colorOnOrange">@color/colorOnOrange</item>
+        <item name="colorOrangeContainer">@color/colorOrangeContainer</item>
+        <item name="colorOnOrangeContainer">@color/colorOnOrangeContainer</item>
+        <item name="colorYellow">@color/colorYellow</item>
+        <item name="colorOnYellow">@color/colorOnYellow</item>
+        <item name="colorYellowContainer">@color/colorYellowContainer</item>
+        <item name="colorOnYellowContainer">@color/colorOnYellowContainer</item>
+        <item name="colorGreen">@color/colorGreen</item>
+        <item name="colorOnGreen">@color/colorOnGreen</item>
+        <item name="colorGreenContainer">@color/colorGreenContainer</item>
+        <item name="colorOnGreenContainer">@color/colorOnGreenContainer</item>
+        <item name="colorPurple">@color/colorPurple</item>
+        <item name="colorOnPurple">@color/colorOnPurple</item>
+        <item name="colorPurpleContainer">@color/colorPurpleContainer</item>
+        <item name="colorOnPurpleContainer">@color/colorOnPurpleContainer</item>
     </style>
 </resources>

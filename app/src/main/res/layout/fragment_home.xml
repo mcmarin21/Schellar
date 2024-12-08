@@ -1,13 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="8sp"
+    android:paddingHorizontal="24sp"
+    android:scrollbars="none"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".app.AppHome">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="home" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/home_saludo"
+            android:layout_marginBottom="8sp"
+            android:id="@+id/home_tv_saludo"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8sp"
+            android:layout_width="match_parent"
+            app:cardBackgroundColor="@color/md_theme_surfaceContainerHigh"
+            style="@style/Widget.Material3.CardView.Filled">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8sp"
+                android:paddingHorizontal="16sp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tus clases proximas"
+                    android:textFontWeight="600"
+                    android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/home_rv_clases_proximas"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+
+</ScrollView>
