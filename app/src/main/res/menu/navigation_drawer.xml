@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_24"
+            android:title="Inicio"
+            android:checkable="true"/>
+
+        <item
+            android:id="@+id/nav_horario"
+            android:icon="@drawable/ic_schedule_24"
+            android:title="Horario"
+            android:checkable="true"/>
+
+        <item
+            android:id="@+id/nav_agenda"
+            android:icon="@drawable/ic_book_24"
+            android:title="Agenda"
+            android:checkable="true"/>
+
+        <item
+            android:id="@+id/nav_calificaciones"
+            android:icon="@drawable/ic_trophy_24"
+            android:title="Calificaciones"
+            android:checkable="true"/>
+
+        <item
+            android:id="@+id/nav_materias"
+            android:icon="@drawable/ic_backpack_24"
+            android:title="Materias"
+            android:checkable="true"/>
+
+    </group>
+
+    <item
+        android:title="">
+        <menu>
+            <item
+                android:title="Configuracion"
+                android:icon="@drawable/ic_settings_24"
+                android:id="@+id/nav_configuracion"
+                android:checkable="true"/>
+        </menu>
+    </item>
+
+</menu>
