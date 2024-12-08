@@ -35,6 +35,7 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment:2.8.4")
     implementation("androidx.navigation:navigation-ui:2.8.4")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

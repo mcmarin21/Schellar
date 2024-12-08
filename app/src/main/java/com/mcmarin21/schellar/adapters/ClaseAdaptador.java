@@ -1,10 +1,10 @@
-package com.mcmarin21.schellar.clases;
+package com.mcmarin21.schellar.adapters;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class claseAdaptador extends BaseAdapter {
+public class ClaseAdaptador extends BaseAdapter {
 
 
     @Override

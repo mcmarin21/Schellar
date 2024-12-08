@@ -94,6 +94,7 @@ public class login_page extends Fragment implements View.OnClickListener {
 
                     editor.putString("user_name_key", userName);
                     editor.putString("password_key",password);
+                    editor.putString("id_key", usuario.getString(0));
 
                     editor.apply();
 

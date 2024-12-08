@@ -1,9 +1,11 @@
 package com.mcmarin21.schellar.model;
 
+import com.mcmarin21.schellar.model.enums.Dias;
+
 public class Clase {
 
-    int idClase;
-    Dias diaClase;
+    public int id;
+    public Dias dia;
 
 
 

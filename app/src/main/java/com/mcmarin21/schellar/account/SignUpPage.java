@@ -133,7 +133,14 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
                     registro.put("password", password);
 
                     baseW.insert("usuario", null, registro);
+
                     baseW.close();
+
+                    base = dBSchellar.getReadableDatabase();
+
+                    Cursor usuario = base.rawQuery("select * from usuario where user = " + '"' + userName + '"' + " AND password = " + '"' + password + '"', null);
+
+                    usuario.moveToFirst();
 
                     SharedPreferences sharedPreferences = getActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
 
@@ -141,8 +148,12 @@ public class SignUpPage extends Fragment implements View.OnClickListener {
 
                     editor.putString("user_name_key", userName);
                     editor.putString("password_key",password);
+                    editor.putString("id_key", usuario.getString(0));
 
                     editor.apply();
+
+
+                    base.close();
 
                     Intent intent = new Intent(getContext(), OnBoarding.class);
                     startActivity(intent);

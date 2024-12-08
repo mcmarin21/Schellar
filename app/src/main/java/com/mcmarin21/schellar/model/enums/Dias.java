@@ -1,4 +1,4 @@
-package com.mcmarin21.schellar.model;
+package com.mcmarin21.schellar.model.enums;
 
 public enum Dias {
 

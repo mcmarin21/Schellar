@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8sp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Material3.CardView.Filled">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16sp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Materia"
+                    android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                    android:id="@+id/layout_materia_tv_nombre"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16sp"
+                        android:layout_height="16sp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="4sp"
+                        android:id="@+id/layout_materia_ic_profesor"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:text="Profesor"
+                        android:layout_gravity="center"
+                        android:id="@+id/layout_materia_tv_profesor"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_marginHorizontal="2sp"
+                    app:icon="@drawable/ic_edit_24"
+                    android:id="@+id/layout_materia_bt_editar"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="2sp"
+                    app:iconTint="@color/md_theme_error"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    app:icon="@drawable/ic_delete_24"
+                    android:id="@+id/layout_materia_bt_eliminar"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
