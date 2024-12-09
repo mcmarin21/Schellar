@@ -1,5 +1,6 @@
 package com.mcmarin21.schellar.materias;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -18,10 +19,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.mcmarin21.schellar.R;
 import com.mcmarin21.schellar.adapters.MateriaAdapter;
 import com.mcmarin21.schellar.model.Base;
@@ -29,7 +34,9 @@ import com.mcmarin21.schellar.model.Materia;
 import com.mcmarin21.schellar.model.Periodo;
 import com.mcmarin21.schellar.model.enums.Colores;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Materias extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
@@ -42,6 +49,10 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
     LinearLayout noMaterias;
     ArrayAdapter<Periodo> adapter;
     MateriaAdapter materiaAdapter;
+    ExtendedFloatingActionButton fabMateria, fabPeriodo;
+    FrameLayout agregarPeriodo, agregarMateria;
+    BottomSheetBehavior<FrameLayout> agregarPeriodoBehavior, agregarMateriaBehavior;
+    EditText periodoFechaInicio, periodoFechaFin, periodoNombre;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -51,6 +62,98 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
         noMateriasImg.setImageResource(R.drawable.img_not_found);
 
         noMaterias = view.findViewById(R.id.materias_ll_no_materias);
+        fabMateria = view.findViewById(R.id.materias_fab_materia);
+        fabPeriodo = view.findViewById(R.id.materias_fab_periodo);
+
+        fabMateria.setOnClickListener(this);
+        fabPeriodo.setOnClickListener(this);
+        periodoNombre = view.findViewById(R.id.materias_periodo_et_nombre);
+        periodoFechaFin = view.findViewById(R.id.materias_periodo_et_fecha_fin);
+        periodoFechaFin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar= Calendar.getInstance();
+                int anio= calendar.get(Calendar.YEAR);
+                int mes=calendar.get(Calendar.MONTH);
+                int dia=calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                        (view, selectedYear, selectedMonth, selectedDay) -> {
+                            Calendar selectedDate = Calendar.getInstance();
+                            selectedDate.set(selectedYear, selectedMonth, selectedDay);
+
+                            if (selectedDate.after(Calendar.getInstance())) {
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                periodoFechaFin.setText(sdf.format(selectedDate.getTime()));
+                            } else {
+                                Toast.makeText(getActivity(), "Seleccione una fecha después de hoy", Toast.LENGTH_SHORT).show();
+                            }
+                        }, anio, mes, dia);
+
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
+                datePickerDialog.show();
+            }
+        });
+        periodoFechaInicio = view.findViewById(R.id.materias_periodo_et_fecha_inicio);
+        periodoFechaInicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar= Calendar.getInstance();
+                int anio= calendar.get(Calendar.YEAR);
+                int mes=calendar.get(Calendar.MONTH);
+                int dia=calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                        (view, selectedYear, selectedMonth, selectedDay) -> {
+                            Calendar selectedDate = Calendar.getInstance();
+                            selectedDate.set(selectedYear, selectedMonth, selectedDay);
+
+                            if (selectedDate.after(Calendar.getInstance())) {
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                periodoFechaInicio.setText(sdf.format(selectedDate.getTime()));
+                            } else {
+                                Toast.makeText(getActivity(), "Seleccione una fecha después de hoy", Toast.LENGTH_SHORT).show();
+                            }
+                        }, anio, mes, dia);
+
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
+                datePickerDialog.show();
+            }
+        });
+
+        agregarPeriodo = view.findViewById(R.id.materias_bs_periodo);
+        agregarPeriodoBehavior = BottomSheetBehavior.from(agregarPeriodo);
+        agregarPeriodoBehavior.setPeekHeight(BottomSheetBehavior.STATE_HIDDEN);
+        agregarPeriodoBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                periodoNombre.setText("");
+                periodoFechaInicio.setText("");
+                periodoFechaFin.setText("");
+            }
+        });
+
+        agregarMateria = view.findViewById(R.id.materias_bs_materia);
+        agregarMateriaBehavior = BottomSheetBehavior.from(agregarMateria);
+        agregarMateriaBehavior.setPeekHeight(BottomSheetBehavior.STATE_HIDDEN);
+        agregarMateriaBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
 
         materias = new ArrayList<>();
         periodosArray = new ArrayList<>();
@@ -76,6 +179,9 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
         periodos.setOnItemClickListener(this);
         if(periodosArray.size() == 0){
             periodos.setOnClickListener(this);
+            fabMateria.setEnabled(false);
+        }else{
+            fabMateria.setEnabled(true);
         }
 
         recyclerView = view.findViewById(R.id.materias_rv_materias);
@@ -110,8 +216,16 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
 
     @Override
     public void onClick(View v) {
-        if(periodosArray.size() == 0){
-            Toast.makeText(getContext(), "Aun no ha agregado ningun periodo", Toast.LENGTH_SHORT).show();
+        if(v.getId() == periodos.getId()){
+            if(periodosArray.size() == 0){
+                Toast.makeText(getContext(), "Aun no ha agregado ningun periodo", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(v.getId() == fabMateria.getId()){
+
+        }
+        else if(v.getId() == fabPeriodo.getId()){
+            agregarPeriodoBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         }
     }
 }
