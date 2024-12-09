@@ -18,7 +18,7 @@ public class Base extends SQLiteOpenHelper {
 
         db.execSQL("create table usuario(idUsuario INTEGER primary key AUTOINCREMENT, user varchar(20), email varchar(50), password varchar(20));");
 
-        db.execSQL("create table periodo(idPeriodo INTEGER primary key AUTOINCREMENT, nombrePeriodo varchar(100), inicioPeriodo date, finPeriodo date);");
+        db.execSQL("create table periodo(idPeriodo INTEGER primary key AUTOINCREMENT, nombrePeriodo varchar(100), inicioPeriodo date, finPeriodo date, usuario INTEGER, FOREIGN KEY(usuario) REFERENCES usuario(idUsuario));");
 
         db.execSQL("create table materia(idMateria INTEGER primary key AUTOINCREMENT, nombreMateria varchar(100), colorMateria varchar(50), profesorMateria varchar(100), periodo INTEGER, FOREIGN KEY(periodo) REFERENCES periodo(idPeriodo));");
 

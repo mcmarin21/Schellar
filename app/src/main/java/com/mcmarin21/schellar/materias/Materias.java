@@ -1,5 +1,9 @@
 package com.mcmarin21.schellar.materias;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -53,7 +57,18 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
 
         Base dbSchellar = new Base(getContext(), "schellar", null, 1);
 
+        SQLiteDatabase baseR = dbSchellar.getReadableDatabase();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
+        String idUsuario = sharedPreferences.getString("id_key", "0");
+        Cursor periodosDB = baseR.rawQuery("select * from periodo where usuario =" + idUsuario , null);
 
+        Periodo temp;
+
+        for (int i = 0; i < periodosDB.getCount(); i++) {
+            periodosDB.move(i);
+            temp = new Periodo(Integer.parseInt(periodosDB.getString(0)), periodosDB.getString(1));
+
+        }
 
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, periodosArray);
         periodos = view.findViewById(R.id.materias_atv_periodos);

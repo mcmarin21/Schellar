@@ -13,6 +13,17 @@ public class Periodo {
     Date fin;
     ArrayList<Materia> materias;
 
+    public Periodo(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
+    public Periodo(int id, String nombre, ArrayList<Materia> materias) {
+        this.id = id;
+        this.nombre = nombre;
+        this.materias = materias;
+    }
+
     public Periodo(int id, String nombre, Date inicio, Date fin) {
         this.id = id;
         this.nombre = nombre;
