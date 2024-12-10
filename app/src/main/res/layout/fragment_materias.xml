@@ -216,7 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginHorizontal="8sp"
-                    android:id="@+id/materias_periodo_btn_cancelar"
+                    android:id="@+id/materias_materia_btn_cancelar"
                     android:text="Cancelar"
                     style="@style/Widget.Material3.Button.OutlinedButton"/>
                 <Button
@@ -224,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8sp"
                     android:layout_weight="1"
-                    android:id="@+id/materias_periodo_btn_agregar"
+                    android:id="@+id/materias_materia_btn_agregar"
                     android:text="Agregar"
                     style="@style/Widget.Material3.Button"/>
             </LinearLayout>

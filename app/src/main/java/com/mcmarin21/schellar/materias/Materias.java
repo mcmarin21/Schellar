@@ -1,6 +1,7 @@
 package com.mcmarin21.schellar.materias;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -53,6 +55,7 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
     FrameLayout agregarPeriodo, agregarMateria;
     BottomSheetBehavior<FrameLayout> agregarPeriodoBehavior, agregarMateriaBehavior;
     EditText periodoFechaInicio, periodoFechaFin, periodoNombre;
+    Button btCancelarPeriodo, btAgregarPeriodo, btCancelarMateria, btAgregarMateria;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -64,6 +67,17 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
         noMaterias = view.findViewById(R.id.materias_ll_no_materias);
         fabMateria = view.findViewById(R.id.materias_fab_materia);
         fabPeriodo = view.findViewById(R.id.materias_fab_periodo);
+
+        btCancelarMateria = view.findViewById(R.id.materias_materia_btn_cancelar);
+        btAgregarMateria = view.findViewById(R.id.materias_materia_btn_agregar);
+
+        btAgregarPeriodo = view.findViewById(R.id.materias_periodo_btn_agregar);
+        btCancelarPeriodo = view.findViewById(R.id.materias_periodo_btn_cancelar);
+
+        btCancelarMateria.setOnClickListener(this);
+        btAgregarPeriodo.setOnClickListener(this);
+        btAgregarPeriodo.setOnClickListener(this);
+        btCancelarPeriodo.setOnClickListener(this);
 
         fabMateria.setOnClickListener(this);
         fabPeriodo.setOnClickListener(this);
@@ -222,10 +236,30 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
             }
         }
         else if(v.getId() == fabMateria.getId()){
-
+            agregarMateriaBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         }
         else if(v.getId() == fabPeriodo.getId()){
             agregarPeriodoBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        }
+        else if(v.getId() == btCancelarMateria.getId()){
+            agregarMateriaBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+        else if (v.getId() == btCancelarPeriodo.getId()){
+            agregarPeriodoBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        } else if (v.getId() == btAgregarPeriodo.getId()) {
+            Base base = new Base(getContext(), "schellar", null, 1);
+            SQLiteDatabase baseW = base.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("nombrePeriodo", periodoNombre.getText().toString());
+            values.put("inicioPeriodo", periodoFechaInicio.getText().toString());
+            values.put("finPeriodo", periodoFechaFin.getText().toString());
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
+            values.put("usuario", Integer.parseInt(sharedPreferences.getString("id_key", null)));
+            baseW.insert("periodo", null, values);
+            base.close();
+
+        } else if (v.getId() == btAgregarMateria.getId()) {
+
         }
     }
 }
