@@ -54,7 +54,7 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
     ExtendedFloatingActionButton fabMateria, fabPeriodo;
     FrameLayout agregarPeriodo, agregarMateria;
     BottomSheetBehavior<FrameLayout> agregarPeriodoBehavior, agregarMateriaBehavior;
-    EditText periodoFechaInicio, periodoFechaFin, periodoNombre;
+    EditText periodoFechaInicio, periodoFechaFin, periodoNombre, materiaNombre, materiaProfesor;
     Button btCancelarPeriodo, btAgregarPeriodo, btCancelarMateria, btAgregarMateria;
 
     @Override
@@ -73,6 +73,9 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
 
         btAgregarPeriodo = view.findViewById(R.id.materias_periodo_btn_agregar);
         btCancelarPeriodo = view.findViewById(R.id.materias_periodo_btn_cancelar);
+
+        materiaNombre = view.findViewById(R.id.materias_materia_et_nombre);
+        materiaProfesor = view.findViewById(R.id.materias_materia_et_profesor);
 
         btCancelarMateria.setOnClickListener(this);
         btAgregarPeriodo.setOnClickListener(this);
@@ -114,7 +117,7 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
             @Override
             public void onClick(View v) {
                 Calendar calendar= Calendar.getInstance();
-                int anio= calendar.get(Calendar.YEAR);
+                int anio = calendar.get(Calendar.YEAR);
                 int mes=calendar.get(Calendar.MONTH);
                 int dia=calendar.get(Calendar.DAY_OF_MONTH);
 
@@ -165,7 +168,8 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
+                materiaNombre.setText("");
+                materiaProfesor.setText("");
             }
         });
 
@@ -178,13 +182,13 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
         String idUsuario = sharedPreferences.getString("id_key", "0");
         Cursor periodosDB = baseR.rawQuery("select * from periodo where usuario =" + idUsuario , null);
-
+        periodosDB.moveToFirst();
         Periodo temp;
 
         for (int i = 0; i < periodosDB.getCount(); i++) {
             periodosDB.move(i);
-            temp = new Periodo(Integer.parseInt(periodosDB.getString(0)), periodosDB.getString(1));
-
+            temp = new Periodo(Integer.parseInt(periodosDB.getString(0)), periodosDB.getString(1), Periodo.convertDate(periodosDB.getString(2)), Periodo.convertDate(periodosDB.getString(3)));
+            periodosArray.add(temp);
         }
 
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, periodosArray);
@@ -247,16 +251,43 @@ public class Materias extends Fragment implements AdapterView.OnItemClickListene
         else if (v.getId() == btCancelarPeriodo.getId()){
             agregarPeriodoBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         } else if (v.getId() == btAgregarPeriodo.getId()) {
-            Base base = new Base(getContext(), "schellar", null, 1);
-            SQLiteDatabase baseW = base.getWritableDatabase();
+
+            Base dbSchellar = new Base(getContext(), "schellar", null, 1);
+            SQLiteDatabase baseW = dbSchellar.getWritableDatabase();
             ContentValues values = new ContentValues();
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
+            String idUsuario = sharedPreferences.getString("id_key", "0");
             values.put("nombrePeriodo", periodoNombre.getText().toString());
             values.put("inicioPeriodo", periodoFechaInicio.getText().toString());
             values.put("finPeriodo", periodoFechaFin.getText().toString());
-            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
-            values.put("usuario", Integer.parseInt(sharedPreferences.getString("id_key", null)));
+            values.put("usuario", Integer.parseInt(idUsuario));
             baseW.insert("periodo", null, values);
-            base.close();
+            baseW.close();
+
+            SQLiteDatabase baseR = dbSchellar.getReadableDatabase();
+            Cursor periodosDB = baseR.rawQuery("select * from periodo where usuario =" + idUsuario , null);
+            periodosDB.moveToFirst();
+            Periodo temp;
+            periodosArray.clear();
+
+            for (int i = 0; i < periodosDB.getCount(); i++) {
+                periodosDB.move(i);
+                temp = new Periodo(Integer.parseInt(periodosDB.getString(0)), periodosDB.getString(1), Periodo.convertDate(periodosDB.getString(2)), Periodo.convertDate(periodosDB.getString(3)));
+                ArrayList<Materia> tempMaterias = new ArrayList<>();
+                Cursor materiasDB = baseR.rawQuery("select * from materia where periodo =" + periodosDB.getString(0) , null);
+                materiasDB.moveToFirst();
+                for (int j = 0; j < materiasDB.getCount(); j++) {
+                    materiasDB.move(j);
+                    Materia materiaTemp = new Materia(Integer.parseInt(materiasDB.getString(0)), materiasDB.getString(1), Colores.valueOf(materiasDB.getString(2)), materiasDB.getString(3));
+                    tempMaterias.add(materiaTemp);
+                }
+                temp.setMaterias(tempMaterias);
+                periodosArray.add(temp);
+            }
+
+            adapter.notifyDataSetChanged();
+            agregarPeriodoBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            Toast.makeText(getContext(), "Periodo agregado", Toast.LENGTH_SHORT).show();
 
         } else if (v.getId() == btAgregarMateria.getId()) {
 

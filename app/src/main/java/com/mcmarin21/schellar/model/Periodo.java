@@ -2,6 +2,7 @@ package com.mcmarin21.schellar.model;
 
 import androidx.annotation.NonNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -52,4 +53,16 @@ public class Periodo {
     public String toString() {
         return nombre;
     }
+
+    public static Date convertDate(String date){
+        Date resultado = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            resultado = sdf.parse(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
 }
